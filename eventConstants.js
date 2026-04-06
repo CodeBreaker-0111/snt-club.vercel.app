@@ -44,16 +44,16 @@ const eventDetails = [
     eventDesc: 'A thrilling cosmic hunt inspired by astronomy, blending science, strategy, and teamwork to uncover hidden treasures.',
     eventImg: astrohunt_img,
     eventStatus: 'past',
-    eventRegLink: 'https://pravah.skit.ac.in/skit-pravah-2026-events/Technical/677e938d178f0fae20e88f33',
+    eventRegLink: '/events/',
     eventRegStatus: 'closed',
   },
   {
     eventName: 'Design Workshop',
     eventDesc: 'The Science & Technology Club presents a hands-on Design Workshop to explore creativity and innovation.',
     eventImg: c_bootcamp_img,
-    eventStatus: 'ongoing',
+    eventStatus: 'past',
     eventRegLink: '/events/DesignwithS&T',
-    eventRegStatus: 'live',
+    eventRegStatus: 'closed',
   },
   // {
   //   eventName: 'CODE-A-THON',
@@ -90,14 +90,14 @@ const eventDetails = [
   //   eventRegStatus: 'closed',
   // },
 
-  {
-    eventName: 'Ask S&T',
-    eventDesc: 'Join us for ASK S&T, an interactive session where 1st-year students / (freshers) can get all their technical and non-technical questions answered by our expert club members!',
-    eventImg: aarambh_img,
-    eventStatus: 'past',
-    eventRegLink: '/events/AskSnT',
-    eventRegStatus: 'closed',
-  },
+// {
+//    eventName: 'Ask S&T',
+//    eventDesc: 'Join us for ASK S&T, an interactive session where 1st-year students / (freshers) can get all their technical and non-technical questions answered by our expert club members!',
+//    eventImg: aarambh_img,
+//    eventStatus: 'past',
+//    eventRegLink: '/events/AskSnT',
+//    eventRegStatus: 'closed',
+//  },
   // {
   //  eventName: 'Aarambh-2025',
   //  eventDesc: "Join us at AARAMBH for an exciting session where we'll welcome freshers and introduce them to the Science and Technology Club, showcasing innovation, insights, and opportunities!",
