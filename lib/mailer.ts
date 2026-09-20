@@ -722,3 +722,204 @@ export async function sendEventAnnouncementMail(
     html: htmlContent,
   });
 }
+
+export async function sendCodeWithSnTMail(
+  to: string,
+  name: string,
+  accessLink: string
+) {
+  // Plain-text fallback for maximum inbox trust & accessibility
+  const textContent = `Dear Participant,
+
+Thank you for registering for Code with S&T 5.0, organized by the Science & Technology Club.
+
+Your registration has been successfully verified. Please find your quiz access details and schedule for tonight’s session below:
+
+• Event: Code with S&T 5.0
+• Date: 20th September 2026
+• Start Time: 04:00 PM
+• End Time: 05:00 PM IST Sharp
+• Access Link: ${accessLink}
+
+Important Instructions:
+• Identity Verification: Join using the exact name and email address/alias provided during registration so your score can be properly recorded on the official leaderboard.
+• Format: The contest consists of coding problems designed to test your programming skills, problem-solving ability and logical thinking.
+• Perks & Recognition: All verified participants who successfully complete the contest will receive a Participation Certificate.
+• Dispute Resolution: In the event of any discrepancy, ambiguity, or dispute regarding scoring, participation, or prize distribution, the decision of the Science & Technology Club will be considered final and binding.
+
+For any real-time technical queries, reach out in the official S&T Club groups.
+
+Best of luck, and code your way to the top! 🚀💻
+
+Warm regards,
+Team S&T
+Science & Technology Club, SKIT Jaipur
+https://snt-club.vercel.app`;
+
+  // Styled, deliverability-optimized HTML
+  const htmlContent = `
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="color-scheme" content="light" />
+  <title>Access Details: Code with S&amp;T 5.0</title>
+</head>
+<body style="margin: 0; padding: 0; background-color: #f1f5f9; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased;">
+  <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="background-color: #f1f5f9; width: 100%; margin: 0; padding: 28px 12px;">
+    <tr>
+      <td align="center">
+        <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="max-width: 580px; width: 100%; background-color: #ffffff; border: 1px solid #cbd5e1; border-radius: 12px; overflow: hidden; box-shadow: 0 1px 3px rgba(0,0,0,0.06);">
+          
+          <!-- Club Header Bar -->
+          <tr>
+            <td style="background-color: #0A146E; padding: 20px 28px;">
+              <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0">
+                <tr>
+                  <td>
+                    <span style="font-size: 16px; font-weight: 700; color: #ffffff; letter-spacing: 0.3px;">Science &amp; Technology Club</span>
+                    <span style="font-size: 13px; color: #93c5fd; margin-left: 6px;">&bull; SKIT Jaipur</span>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+          <!-- Main Greeting & Lead -->
+          <tr>
+            <td style="padding: 28px 28px 12px 28px;">
+              <p style="margin: 0; font-size: 15px; color: #1e293b; line-height: 1.6;">
+                Dear <strong>${name || 'Participant'}</strong>,
+              </p>
+              <p style="margin: 12px 0 0 0; font-size: 14px; color: #334155; line-height: 1.6;">
+                Thank you for registering for <strong>Code with S&amp;T 5.0</strong>, organized by the <em>Science &amp; Technology Club</em>.
+              </p>
+              <p style="margin: 10px 0 0 0; font-size: 14px; color: #334155; line-height: 1.6;">
+                Your registration has been successfully verified. Please find your quiz access details and schedule for today&apos;s session below:
+              </p>
+            </td>
+          </tr>
+
+          <!-- Schedule & Details Card -->
+          <tr>
+            <td style="padding: 8px 28px 20px 28px;">
+              <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="background-color: #f8fafc; border: 1.5px solid #e2e8f0; border-radius: 8px;">
+                <tr>
+                  <td style="padding: 10px 16px; border-bottom: 1px solid #e2e8f0; width: 110px; font-size: 12px; font-weight: 700; color: #64748b; text-transform: uppercase;">Event</td>
+                  <td style="padding: 10px 16px; border-bottom: 1px solid #e2e8f0; font-size: 14px; font-weight: 700; color: #0A146E;">Code with S&amp;T 5.0</td>
+                </tr>
+                <tr>
+                  <td style="padding: 10px 16px; border-bottom: 1px solid #e2e8f0; font-size: 12px; font-weight: 700; color: #64748b; text-transform: uppercase;">Date</td>
+                  <td style="padding: 10px 16px; border-bottom: 1px solid #e2e8f0; font-size: 14px; font-weight: 600; color: #0f172a;">20th September 2026</td>
+                </tr>
+                <tr>
+                  <td style="padding: 10px 16px; border-bottom: 1px solid #e2e8f0; font-size: 12px; font-weight: 700; color: #64748b; text-transform: uppercase;">Start Time</td>
+                  <td style="padding: 10px 16px; border-bottom: 1px solid #e2e8f0; font-size: 14px; font-weight: 600; color: #0f172a;">04:00 PM</td>
+                </tr>
+                <tr>
+                  <td style="padding: 10px 16px; font-size: 12px; font-weight: 700; color: #64748b; text-transform: uppercase;">End Time</td>
+                  <td style="padding: 10px 16px; font-size: 14px; font-weight: 700; color: #dc2626;">05:00 PM IST Sharp</td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+          <!-- Primary Access Link CTA -->
+          <tr>
+            <td align="center" style="padding: 0 28px 24px 28px;">
+              <table role="presentation" cellspacing="0" cellpadding="0" border="0">
+                <tr>
+                  <td align="center" style="border-radius: 8px; background-color: #0A146E;">
+                    <a href="${accessLink}" target="_blank" style="font-size: 15px; font-weight: 700; color: #ffffff; text-decoration: none; padding: 14px 32px; display: inline-block;">
+                      Access Contest Arena &rarr;
+                    </a>
+                  </td>
+                </tr>
+              </table>
+              <p style="margin: 10px 0 0 0; font-size: 12px; color: #64748b;">
+                Or access directly via link: <br />
+                <a href="${accessLink}" target="_blank" style="color: #0A146E; word-break: break-all; font-weight: 600;">${accessLink}</a>
+              </p>
+            </td>
+          </tr>
+
+          <!-- Important Instructions -->
+          <tr>
+            <td style="padding: 0 28px 20px 28px;">
+              <div style="background-color: #fffbeb; border: 1.5px solid #fef3c7; border-radius: 8px; padding: 18px;">
+                <p style="margin: 0 0 12px 0; font-size: 13px; font-weight: 800; color: #92400e; text-transform: uppercase; letter-spacing: 0.5px;">
+                  ⚠️ Important Instructions:
+                </p>
+                
+                <p style="margin: 0 0 8px 0; font-size: 13px; color: #78350f; line-height: 1.5;">
+                  <strong>• Identity Verification:</strong> Join using the exact name and email address/alias provided during registration so your score can be properly recorded on the official leaderboard.
+                </p>
+                <p style="margin: 0 0 8px 0; font-size: 13px; color: #78350f; line-height: 1.5;">
+                  <strong>• Format:</strong> The contest consists of coding problems designed to test your programming skills, problem-solving ability and logical thinking.
+                </p>
+                <p style="margin: 0 0 8px 0; font-size: 13px; color: #78350f; line-height: 1.5;">
+                  <strong>• Perks &amp; Recognition:</strong> All verified participants who successfully complete the contest will receive a Participation Certificate.
+                </p>
+                <p style="margin: 0; font-size: 13px; color: #78350f; line-height: 1.5;">
+                  <strong>• Dispute Resolution:</strong> In the event of any discrepancy, ambiguity, or dispute regarding scoring, participation, or prize distribution, the decision of the Science &amp; Technology Club will be considered final and binding.
+                </p>
+              </div>
+            </td>
+          </tr>
+
+          <!-- Technical Queries & Sign-off -->
+          <tr>
+            <td style="padding: 0 28px 24px 28px;">
+              <p style="margin: 0 0 16px 0; font-size: 13.5px; color: #475569; line-height: 1.6;">
+                For any real-time technical queries, reach out in the official S&amp;T Club groups.
+              </p>
+              <p style="margin: 0 0 16px 0; font-size: 14.5px; font-weight: 600; color: #0A146E;">
+                Best of luck, and code your way to the top! 🚀💻
+              </p>
+              <p style="margin: 0; font-size: 14px; color: #334155; line-height: 1.4;">
+                <em>Warm regards,</em><br />
+                <strong>Team S&amp;T</strong>
+              </p>
+            </td>
+          </tr>
+
+          <!-- Footer -->
+          <tr>
+            <td style="background-color: #f8fafc; border-top: 1px solid #e2e8f0; padding: 16px 28px;">
+              <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0">
+                <tr>
+                  <td style="font-size: 12px; color: #94a3b8;">
+                    Science &amp; Technology Club &bull; SKIT Jaipur
+                  </td>
+                  <td align="right" style="font-size: 12px;">
+                    <a href="https://snt-club.vercel.app" target="_blank" style="color: #0A146E; font-weight: 600; text-decoration: underline;">snt-club.vercel.app</a>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+        </table>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>
+  `.trim();
+
+  await transporter.sendMail({
+  from: `"S&T Club, SKIT" <${process.env.EMAIL_USER}>`,
+  to,
+  replyTo: process.env.EMAIL_USER,
+  subject: `Code With S&T 5.0 — Contest Details & Access Link`,
+  headers: {
+    'List-Unsubscribe': `<mailto:${process.env.EMAIL_USER}?subject=unsubscribe>`,
+    'List-Unsubscribe-Post': 'List-Unsubscribe=One-Click',
+    'Precedence': 'bulk',
+    'X-Mailer': 'SNT-Club-Mailer',
+  },
+  text: textContent,
+  html: htmlContent,
+});
+}
