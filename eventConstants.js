@@ -1,8 +1,24 @@
 // EVENT STATUS = upcoming, ongoing, past
 // EVENT REG STATUS = live, closed
+/**
+ * @typedef {Object} EventDetails
+ * @property {string} eventName
+ * @property {string} eventDesc
+ * @property {*} eventImg
+ * @property {string} eventRegLink
+ * @property {string} registrationDeadline - Registration closes at this time. Can be changed independently to extend/shorten registration.
+ * @property {string} startDateTime - Actual event start. Reminder system uses this timestamp. Attendance also opens at this time.
+ * @property {string} endDateTime - Event is considered "past" after this timestamp.
+ * @property {string} attendanceDeadline - Attendance remains open after the event ends and closes at this timestamp.
+ * @property {string} eventDate
+ * @property {string} eventTime
+ * @property {string} eventVenue
+ */
+
 
 import { flutterworkshop_img, code_img , c_bootcamp_img, windows_img , s, aarambh_img, astrohunt_img } from '@/assets/index';
 
+/** @type {EventDetails[]} */
 const eventDetails = [
   // {
   //   eventName: 'CodeFormers',
@@ -91,11 +107,11 @@ const eventDetails = [
     eventName: 'CODE WITH S&T 5.0',
     eventDesc: 'Science and Technology Club is back with next chapter of Code With S&T - this time bigger and better!',
     eventImg: code_img,
-    eventStatus: 'ongoing',
     eventRegLink: '/events/a1sk5sn7',
-    eventRegStatus: 'live',
+    registrationDeadline: '2026-09-20T16:00:00+05:30',
     startDateTime: '2026-09-20T16:00:00+05:30',
-    endDateTime: '',
+    endDateTime: '2026-09-20T17:00:00+05:30',
+    attendanceDeadline: '',
     eventDate: 'September 20, 2026',
     eventTime: '4:00 PM - 5:00 PM',
     eventVenue: 'Online Mode',
@@ -105,11 +121,11 @@ const eventDetails = [
     eventName: 'Ask S&T',
     eventDesc: 'Join us for ASK S&T, an interactive session where 1st-year students / (freshers) can get all their technical and non-technical questions answered by our expert club members!',
     eventImg: aarambh_img,
-    eventStatus: 'upcoming',
     eventRegLink: '/events/p7x2k9nt',
-    eventRegStatus: 'closed',
+    registrationDeadline: '',
     startDateTime: '',
     endDateTime: '',
+    attendanceDeadline: '',
     eventDate: '',
     eventTime: '',
     eventVenue: '',
@@ -118,11 +134,11 @@ const eventDetails = [
     eventName: 'C Bootcamp',
     eventDesc: 'Join the C Bootcamp to master C programming through flexible hybrid classes, hands-on tasks, and real-time support.',
     eventImg: c_bootcamp_img,
-    eventStatus: 'ongoing',
     eventRegLink: '/events/c5bt3kp8',
-    eventRegStatus: 'live',
-    startDateTime: '2026-09-20T23:59:00+05:30',
-    endDateTime: '2026-09-16T15:30:00+05:30',
+    registrationDeadline: '2026-09-20T23:59:00+05:30',
+    startDateTime: '2026-09-16T13:30:00+05:30',
+    endDateTime: '2026-09-30T15:30:00+05:30',
+    attendanceDeadline: '2026-09-16T15:30:00+05:30',
     eventDate: 'Every Wednesday & Saturday',
     eventTime: '2 PM - 3 PM (Wed) & 6 PM - 7 PM (Sat)',
     eventVenue: 'Offline on Wednesdays & Online on Saturdays',
@@ -131,28 +147,28 @@ const eventDetails = [
     eventName: 'Aarambh 2026',
     eventDesc: "Join us at AARAMBH for an exciting session where we'll welcome freshers and introduce them to the Science and Technology Club, showcasing innovation, insights, and opportunities!",
     eventImg: flutterworkshop_img,
-    eventStatus: 'past',
     eventRegLink: '/events/Aarambh2026',
-    eventRegStatus: 'closed',
+    registrationDeadline: '',
     startDateTime: '2026-09-01T13:30:00+05:30',
-    endDateTime: '',
+    endDateTime: '2026-09-01T15:00:00+05:30',
+    attendanceDeadline: '',
     eventDate: 'September 1, 2026',
     eventTime: '1:30 PM - 3:00 PM',
     eventVenue: 'JC Bose Seminar Hall, Civil Block',
   },
-  {
-    eventName: 'Design Workshop',
-    eventDesc: 'The Science & Technology Club presents a hands-on Design Workshop to explore creativity and innovation.',
-    eventImg: c_bootcamp_img,
-    eventStatus: 'past',
-    eventRegLink: '/events/DesignwithS&T',
-    eventRegStatus: 'closed',
-    startDateTime: '',
-    endDateTime: '',
-    eventDate: '',
-    eventTime: '',
-    eventVenue: '',
-  },
+  // {
+  //   eventName: 'Design Workshop',
+  //   eventDesc: 'The Science & Technology Club presents a hands-on Design Workshop to explore creativity and innovation.',
+  //   eventImg: c_bootcamp_img,
+  //   eventStatus: 'past',
+  //   eventRegLink: '/events/DesignwithS&T',
+  //   eventRegStatus: 'closed',
+  //   startDateTime: '',
+  //   endDateTime: '',
+  //   eventDate: '',
+  //   eventTime: '',
+  //   eventVenue: '',
+  // },
  
   // {
   //   eventName: 'Tech Talk With Alumni',

@@ -14,7 +14,7 @@ export async function POST(req: Request) {
     if (!eventConfig) {
       return NextResponse.json({ error: "Invalid event." }, { status: 400 });
     }
-    if (eventConfig.deadline) {
+    if (!eventConfig.attendanceOpen) {
       return NextResponse.json({ error: "Attendance submission is now closed for this event." }, { status: 403 })
     }
     
