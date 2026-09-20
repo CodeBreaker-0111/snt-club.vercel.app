@@ -38,7 +38,7 @@ export async function POST(req: Request) {
   let dispatchedCount = 0;
 
   for (const event of events) {
-    if (!event.startDateTime || !event.open) continue;
+    if (!event.startDateTime || !event.registrationOpen) continue;
 
     const eventTime = new Date(event.startDateTime).getTime();
     const diffHours = (eventTime - now) / (1000 * 60 * 60);

@@ -2,13 +2,13 @@ import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
 
-import { eventDetails } from '@/eventConstants';
+import { getAllDisplayEvents } from '@/lib/eventRegistrations';
 
 const events = () => {
-  // To check if there is any upcoming event or not
+  const allEvents = getAllDisplayEvents();
   const UpcomingEventNumber = [];
   {
-    eventDetails.map((details) => (details.eventStatus === 'upcoming' ? UpcomingEventNumber.push('0') : ''));
+    allEvents.map((details) => (details.status === 'upcoming' ? UpcomingEventNumber.push('0') : ''));
   }
   return (
     <div className="container mx-auto h-fit" id="events">
@@ -23,19 +23,19 @@ const events = () => {
             <Link href="https://drive.google.com/file/d/1gOZ47gtvLzDcBMBklSnYNNehHjK57EK9/view?usp=sharing " target='_blank'>Download Tentative Schedule</Link>
           </div>
         </div> */}
-        {eventDetails.map((details, index) =>
-          details.eventStatus === 'upcoming' ? (
+        {allEvents.map((details, index) =>
+          details.status === 'upcoming' ? (
             <div key={index} className="mx-auto mb-6 mt-[10px] w-full md:mt-[20px]">
               <div className="grid grid-cols-12 rounded-[20px] bg-[#0A146E] p-[20px] text-white">
                 <div className="col-span-12 mx-auto md:col-span-3">
-                  <Image src={details.eventImg} alt={details.eventName} className="aspect-square w-[200px]" />
+                  <Image src={details.img} alt={details.title} className="aspect-square w-[200px]" />
                 </div>
                 <div className="col-span-12 my-auto px-4 py-4 md:col-span-9 md:px-8">
                   <div>
-                    <p className="pb-2 text-xl font-bold md:pb-4 md:text-3xl">{details.eventName}</p>
+                    <p className="pb-2 text-xl font-bold md:pb-4 md:text-3xl">{details.title}</p>
                   </div>
                   <div>
-                    <p className="pb-2 text-sm md:pb-4 md:text-lg">{details.eventDesc}</p>
+                    <p className="pb-2 text-sm md:pb-4 md:text-lg">{details.description}</p>
                   </div>
                   <div>
                     <p className="font-semibold text-[#4bee6e]">Registrations Start Soon</p>
@@ -63,23 +63,23 @@ const events = () => {
         <div className="text-center">
           <p className="pt-4 text-2xl font-bold md:text-5xl">Ongoing Events</p>
         </div>
-        {eventDetails.map((details, index) =>
-          details.eventStatus === 'ongoing' ? (
+        {allEvents.map((details, index) =>
+          details.status === 'ongoing' ? (
             <div key={index} className="mx-auto mb-6 mt-[10px] w-full md:mt-[20px]">
               <div className={`grid grid-cols-12 rounded-[20px] bg-[#0A146E] p-[20px] text-white`}>
                 <div className="col-span-12 mx-auto md:col-span-3">
-                  <Image src={details.eventImg} alt={details.eventName} className="aspect-square w-[200px]" />
+                  <Image src={details.img} alt={details.title} className="aspect-square w-[200px]" />
                 </div>
                 <div className="col-span-12 my-auto px-4 py-4 md:col-span-9 md:px-8">
                   <div>
-                    <p className="pb-2 text-xl font-bold md:pb-4 md:text-3xl">{details.eventName}</p>
+                    <p className="pb-2 text-xl font-bold md:pb-4 md:text-3xl">{details.title}</p>
                   </div>
                   <div>
-                    <p className="pb-2 text-sm md:pb-4 md:text-lg">{details.eventDesc}</p>
+                    <p className="pb-2 text-sm md:pb-4 md:text-lg">{details.description}</p>
                   </div>
-                  {details.eventRegStatus === 'live' ? (
+                  {details.registrationOpen ? (
                     <div>
-                      <Link href={details.eventRegLink} target="_blank">
+                      <Link href={details.link} target="_blank">
                         <p className="w-fit rounded-[4px] border border-[#EE4B76] bg-[#EE4B76] px-2 py-1 text-center font-semibold duration-200 hover:bg-opacity-0 hover:text-[#EE4B76]">
                           Register Now
                         </p>
@@ -104,19 +104,19 @@ const events = () => {
         <div className="text-center">
           <p className="pt-4 text-2xl font-bold md:text-5xl">Past Events</p>
         </div>
-        {eventDetails.map((details, index) =>
-          details.eventStatus === 'past' ? (
+        {allEvents.map((details, index) =>
+          details.status === 'past' ? (
             <div key={index} className="mx-auto mb-6 mt-[10px] w-full md:mt-[20px]">
               <div className="grid grid-cols-12 rounded-[20px] bg-[#0A146E] p-[20px] text-white">
                 <div className="col-span-12 mx-auto md:col-span-3">
-                  <Image src={details.eventImg} alt={details.eventName} className="aspect-square w-[200px]" />
+                  <Image src={details.img} alt={details.title} className="aspect-square w-[200px]" />
                 </div>
                 <div className="col-span-12 my-auto px-4 py-4 md:col-span-9 md:px-8">
                   <div>
-                    <p className="pb-2 text-xl font-bold md:pb-4 md:text-3xl">{details.eventName}</p>
+                    <p className="pb-2 text-xl font-bold md:pb-4 md:text-3xl">{details.title}</p>
                   </div>
                   <div>
-                    <p className="pb-2 text-sm md:pb-4 md:text-lg">{details.eventDesc}</p>
+                    <p className="pb-2 text-sm md:pb-4 md:text-lg">{details.description}</p>
                   </div>
                   <div>
                     <p className="font-semibold text-[#EE4B76]">Registrations Closed</p>
